@@ -18,7 +18,7 @@ const app = express();
 app.get('/cek-mutasi', (req, res) => {
   // lakukan cek mutasi di sini
   // simpan data mutasi ke dalam database
-  // contoh:
+  
   db.query('INSERT INTO mutasi (jenis_mutasi, tanggal_mutasi, nominal_mutasi, keterangan_mutasi) VALUES (?, ?, ?, ?)', ['Gopay', new Date(), 10000, 'Pembelian di Tokopedia'], (err, result) => {
     if (err) {
       console.log(err);
@@ -33,7 +33,7 @@ app.get('/cek-mutasi', (req, res) => {
 cron.schedule('*/1 * * * *', () => {
   // lakukan cek mutasi di sini
   // simpan data mutasi ke dalam database
-  // contoh:
+  
   db.query('INSERT INTO mutasi (jenis_mutasi, tanggal_mutasi, nominal_mutasi, keterangan_mutasi) VALUES (?, ?, ?, ?)', ['Dana', new Date(), 20000, 'Pembelian di Shopee'], (err, result) => {
     if (err) {
       console.log(err);
@@ -46,7 +46,7 @@ cron.schedule('*/1 * * * *', () => {
 // routing untuk cash-in
 app.post('/cash-in', (req, res) => {
   // tambahkan data cash-in ke dalam database
-  // contoh:
+  
   db.query('INSERT INTO cash_in (id_mutasi, tanggal_cash_in, nominal_cash_in, keterangan_cash_in) VALUES (?, ?, ?, ?)', [1, new Date(), 10000, 'Konfirmasi pembayaran'], (err, result) => {
     if (err) {
       console.log(err);
@@ -94,7 +94,7 @@ app.get('/scrapping', async (req, res) => {
   // cron job untuk match row dan proses payment setiap 3 menit
   cron.schedule('*/3 * * * *', () => {
     // lakukan match row dan proses payment di sini
-    // contoh:
+    
     db.query('SELECT * FROM cash_in WHERE status = "belum diproses"', (err, rows) => {
       if (err) {
         console.log(err);
